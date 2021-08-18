@@ -1,0 +1,39 @@
+regions:
+- "global"
+- "eu-west-1"
+
+account-blacklist:
+  - "754021874844" # sf-sso
+
+accounts:
+  AWS_ACCOUNT_ID:
+    filters:
+      IAMRole:
+      - "Terraform"
+      - "ScaleFactoryUser"
+      IAMPolicy:
+      - "arn:aws:iam::AWS_ACCOUNT_ID:policy/UserSFAssumeRole"
+      - "arn:aws:iam::AWS_ACCOUNT_ID:policy/ECSAndECRUser"
+      IAMGroupPolicyAttachment:
+      - "TerraformGroup -> ECSAndECRUser"
+      - "TerraformGroup -> UserSFAssumeRole"
+      - "TerraformGroup -> ReadOnlyAccess"
+      - "SFGroup -> ReadOnlyAccess"
+      IAMGroup:
+      - "TerraformGroup"
+      - "SFGroup"
+      IAMUserAccessKey:
+      - "Terraform -> TF_AWS_ACCESS_KEY_ID"
+      - "ScaleFactory -> CAN_AWS_ACCESS_KEY_ID"
+      IAMLoginProfile:
+      - "ScaleFactory"
+      IAMUserGroupAttachment:
+      - "Terraform -> TerraformGroup"
+      - "ScaleFactory -> SFGroup"
+      IAMUser:
+      - "Terraform"
+      - "ScaleFactory"
+      CloudFormationStack:
+      - "tech-test-cf"
+      IAMRolePolicyAttachment:
+      - "Terraform -> AdministratorAccess"

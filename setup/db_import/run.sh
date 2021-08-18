@@ -1,0 +1,2 @@
+echo "mysqlimport --local --port=3306 --default-character-set=utf8 --columns=project_code,page_name,page_views,bytes --fields-terminated-by=' ' --host=$MYSQLHOST --user=$MYSQLUSER --password=$MYSQLPASSWORD wikicheckdb /app/page_views.data"
+mysqlimport --local --port=3306 --default-character-set=utf8 --columns=project_code,page_name,page_views,bytes --fields-terminated-by=' ' --host=$MYSQLHOST --user=$MYSQLUSER --password=$MYSQLPASSWORD wikicheckdb /app/page_views.data

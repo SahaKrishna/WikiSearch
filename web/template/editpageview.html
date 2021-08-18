@@ -1,0 +1,26 @@
+{{define "editpageview"}}
+{{ template "header" .}}
+
+<h1>Page edit</h1>
+
+    {{range .}}
+  
+  <form action="/pageview/save/{{.ID}}" method="POST">
+    <div>ID: {{.ID}}</div>
+    <div>Project Code</div>
+    <div><textarea name="projectcode" rows="1" cols="20">{{.ProjectCode}}</textarea></div>
+    <div>Page Name</div>
+    <div><textarea name="pagename" rows="1" cols="100">{{.PageName}}</textarea></div>
+    <div>Page Views</div>
+    <div><textarea name="pageviews" rows="1" cols="10">{{.PageViews}}</textarea></div>
+    <div>Bytes</div>
+    <div><textarea name="bytes" rows="1" cols="10">{{.Bytes}}</textarea></div>
+    
+    <div><input type="submit" value="Save"></div>
+
+  </form>
+  <a href="/pageview/show/{{.ID}}">View</a>  
+{{end}}
+
+{{ template "footer" .}}
+{{ end }}

@@ -1,0 +1,14 @@
+{{define "index"}}
+{{ template "header" .}}
+
+<h1>WikiStats Search And Compare</h1>
+<form action="/pageview/search" method="POST">
+    <div><input type="text" name="pagename" value=""/></div>
+    <div><input type="submit" value="Search"></div>
+</form>
+<br/>
+
+<a href="/pageview/new">New</a>
+
+{{ template "footer" .}}
+{{ end }}

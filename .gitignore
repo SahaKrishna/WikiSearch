@@ -1,0 +1,27 @@
+/*.db
+/*.data
+/*.db-journal
+
+
+.DS_Store
+*.swp
+
+# ruby
+vendor/bin/
+.bundle
+.ruby-version
+
+# terraform
+.terraform
+
+# terragrunt
+.terragrunt-cache
+
+# credentials
+.creds
+.env
+.nuke.yaml
+.KEYIDS
+
+# INSTRUCTIONS
+INSTRUCTIONS.md

@@ -1,0 +1,22 @@
+[
+    {
+        "cpu": ${fargate_cpu},
+        "image": "${app_image}",
+        "memory": ${fargate_memory},
+        "name": "${name}-container",
+        "networkMode": "awsvpc",
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${name}-logs",
+                "awslogs-region": "${region_name}",
+                "awslogs-stream-prefix": "${name}-logs"
+            }
+        },
+        "environment" : [
+            { "name" : "MYSQLHOST", "value" : "${database}" },
+            { "name" : "MYSQLUSER", "value" : "awsuser" },
+            { "name" : "MYSQLPASSWORD", "value" : "0v3rH3ardABOUT1234562" }
+        ]
+    }
+]

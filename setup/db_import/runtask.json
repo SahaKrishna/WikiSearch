@@ -1,0 +1,17 @@
+{
+    "cluster": "wiki-check-cluster",
+    "taskDefinition": "${APP_IMAGE}",
+    "count": 1,
+    "launchType": "FARGATE",
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                ${SUB}
+            ],
+            "securityGroups": [
+                "${SG}"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}

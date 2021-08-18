@@ -1,0 +1,21 @@
+{{define "newpageview"}}
+{{ template "header" .}}
+
+<h1>New item</h1>
+
+    <form action="/pageview/new" method="POST">
+    <div>Project Code</div>
+    <div><textarea name="projectcode" rows="1" cols="20"></textarea></div>
+    <div>Page Name</div>
+    <div><textarea name="pagename" rows="1" cols="100"></textarea></div>
+    <div>Page Views</div>
+    <div><textarea name="pageviews" rows="1" cols="10"></textarea></div>
+    <div>Bytes</div>
+    <div><textarea name="bytes" rows="1" cols="10"></textarea></div>
+    
+    <div><input type="submit" value="Save"></div>
+
+  </form>
+
+  {{ template "footer" .}}
+  {{ end }}

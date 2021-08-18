@@ -1,0 +1,26 @@
+[
+    {
+        "cpu": ${fargate_cpu},
+        "image": "${app_image}",
+        "memory": ${fargate_memory},
+        "name": "${name}-container",
+        "networkMode": "awsvpc",
+        "portMappings": [
+            {
+                "containerPort": ${app_port}
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${name}-logs",
+                "awslogs-region": "${region_name}",
+                "awslogs-stream-prefix": "${name}-logs"
+            }
+        },
+        "environment" : [
+            { "name" : "SQL_TYPE", "value" : "mysql" },
+            { "name" : "SQL_CONNECTION_STRING", "value" : "awsuser:0v3rH3ardABOUT1234562@tcp(${database})/wikicheckdb?charset=utf8&parseTime=True&loc=Local" }
+        ]
+    }
+]

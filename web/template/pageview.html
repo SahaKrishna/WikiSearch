@@ -1,0 +1,48 @@
+{{define "pageview"}}
+{{ template "header" .}}
+
+
+<h1>Page views detail</h1>
+
+    {{range .}}
+<table>
+    <tbody>
+      <tr>
+        <th>Id:</th>
+        <td>{{.ID}}</td>
+      </tr>
+      <tr>
+        <th>Project code:</th>
+        <td>{{.ProjectCode}}</td>
+      </tr>
+      <tr>
+        <th>Page name:</th>
+        <td><a href="http://{{.ProjectCode}}.wikipedia.org/wiki/{{.PageName}}">{{.PageName}}</a></td>
+      </tr>
+      <tr>
+        <th>Page views:</th>
+        <td>{{.PageViews}}</td>
+      </tr>
+      <tr>
+        <th>Bytes:</th>
+        <td>{{.Bytes}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <hr />
+  
+  <a href="/pageview/edit/{{.ID}}">Edit</a>  
+
+  {{end}}
+
+  <form action="/pageview/search" method="POST">
+    <div><input type="text" name="pagename" value=""/></div>
+    <div><input type="submit" value="Search"></div>
+</form>
+<br/>
+
+<a href="/pageview/new">New</a>
+
+{{ template "footer" .}}
+{{ end }}

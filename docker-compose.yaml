@@ -1,0 +1,29 @@
+---
+version: "3.2"
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: notgod
+      MYSQL_DATABASE: wikicheckdb
+      MYSQL_USER: tsf
+      MYSQL_PASSWORD: thescalefactorypw
+  server:
+    container_name: wiki-check-sf-tech-test
+    build: .
+    image: wiki-check-sf-tech-test:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SQL_TYPE: mysql
+      SQL_CONNECTION_STRING: "root:notgod@tcp(db:3306)/wikicheckdb?charset=utf8&parseTime=True&loc=Local"
+
+volumes:
+    db_data:
